@@ -8,7 +8,7 @@ services:
       - SDK_TYPE=ps5
       - PS5_PAYLOAD_SDK=/opt/ps5-payload-sdk
     volumes:
-      - ${PROJECT_PATH:-.}:/project
+      - ${PROJECT_PATH:-$PWD}:/project
     working_dir: /project
 
   # PS4 SDK build service
@@ -20,7 +20,7 @@ services:
       - SDK_TYPE=ps4
       - PS4_PAYLOAD_SDK=/opt/ps4-payload-sdk
     volumes:
-      - ${PROJECT_PATH:-.}:/project
+      - ${PROJECT_PATH:-$PWD}:/project
     working_dir: /project
 
   # Interactive shell with PS5 SDK
@@ -32,7 +32,7 @@ services:
       - SDK_TYPE=ps5
       - PS5_PAYLOAD_SDK=/opt/ps5-payload-sdk
     volumes:
-      - ${PROJECT_PATH:-.}:/project
+      - ${PROJECT_PATH:-$PWD}:/project
     working_dir: /project
     stdin_open: true
     tty: true
@@ -47,7 +47,7 @@ services:
       - SDK_TYPE=ps4
       - PS4_PAYLOAD_SDK=/opt/ps4-payload-sdk
     volumes:
-      - ${PROJECT_PATH:-.}:/project
+      - ${PROJECT_PATH:-$PWD}:/project
     working_dir: /project
     stdin_open: true
     tty: true
