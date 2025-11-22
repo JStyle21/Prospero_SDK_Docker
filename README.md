@@ -91,8 +91,11 @@ PROJECT_PATH=/home/user/ftpsrv docker-compose run --rm ps5-build
 git clone https://github.com/ps5-payload-dev/ftpsrv.git
 cd ftpsrv
 
-# Build with PS5 SDK
-docker-compose -f /path/to/Prospero_SDK_Docker/docker-compose.yml run --rm ps5-build
+# Build for PS5
+docker-compose -f /path/to/Prospero_SDK_Docker/docker-compose.yml run --rm ps5-build make -f Makefile.ps5
+
+# Build for PS4
+docker-compose -f /path/to/Prospero_SDK_Docker/docker-compose.yml run --rm ps4-build make -f Makefile.ps4
 ```
 
 ## Troubleshooting
