@@ -1,13 +1,18 @@
 FROM debian:bookworm-slim
 
-# Install required dependencies
+# Install basic dependencies and add LLVM repository
 RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    software-properties-common \
+    && wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc \
+    && echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-18 main" > /etc/apt/sources.list.d/llvm.list \
+    && apt-get update && apt-get install -y \
     bash \
     clang-18 \
     lld-18 \
     make \
     git \
-    wget \
     curl \
     socat \
     cmake \
