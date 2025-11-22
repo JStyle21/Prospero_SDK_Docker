@@ -20,6 +20,9 @@ case "${SDK_TYPE,,}" in
         ;;
 esac
 
+# Fix git dubious ownership warning for mounted volumes
+git config --global --add safe.directory /project 2>/dev/null || true
+
 # Display SDK info
 echo "SDK Path: ${SDK_PATH}"
 echo "Working directory: $(pwd)"
