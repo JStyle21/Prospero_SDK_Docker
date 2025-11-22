@@ -98,6 +98,31 @@ docker-compose -f /path/to/Prospero_SDK_Docker/docker-compose.yml run --rm ps5-b
 docker-compose -f /path/to/Prospero_SDK_Docker/docker-compose.yml run --rm ps4-build make -f Makefile.ps4
 ```
 
+## Platform Notes
+
+### Linux / macOS / WSL2
+
+Works out of the box. The `$PWD` variable automatically uses your current directory.
+
+### Windows (PowerShell)
+
+Works with PowerShell since it supports `$PWD`:
+
+```powershell
+cd C:\path\to\ftpsrv
+docker-compose -f C:\path\to\Prospero_SDK_Docker\docker-compose.yml run --rm ps5-build make -f Makefile.ps5
+```
+
+### Windows (CMD)
+
+CMD doesn't support `$PWD`. Set `PROJECT_PATH` explicitly:
+
+```cmd
+cd C:\path\to\ftpsrv
+set PROJECT_PATH=%CD%
+docker-compose -f C:\path\to\Prospero_SDK_Docker\docker-compose.yml run --rm ps5-build make -f Makefile.ps5
+```
+
 ## Troubleshooting
 
 ### Permission issues
